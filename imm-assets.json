@@ -1,0 +1,346 @@
+{
+  "amplop-untuk-beni": [
+    1007,
+    718
+  ],
+  "bingkai-teks-putih": [
+    971,
+    163
+  ],
+  "ikon-amplop": [
+    127,
+    108
+  ],
+  "ikon-beranda": [
+    1086,
+    1080
+  ],
+  "ikon-panah-kanan": [
+    1118,
+    1080
+  ],
+  "ikon-panah-kiri": [
+    1120,
+    1080
+  ],
+  "ikon-suara-aktif": [
+    1017,
+    1080
+  ],
+  "ikon-suara-mati": [
+    1034,
+    1080
+  ],
+  "indikator-progres-tiga-lingkaran": [
+    454,
+    164
+  ],
+  "judul-pilih-karakter": [
+    1920,
+    585
+  ],
+  "judul-pilih-tahap": [
+    1581,
+    257
+  ],
+  "judul-puzzle": [
+    1648,
+    521
+  ],
+  "judul-tentang": [
+    1177,
+    375
+  ],
+  "kartu-maskot-zaa": [
+    566,
+    865
+  ],
+  "kartu-maskot-zee": [
+    595,
+    816
+  ],
+  "kartu-tahap-angka-terbuka": [
+    728,
+    1080
+  ],
+  "kartu-tahap-angka-terkunci": [
+    674,
+    936
+  ],
+  "kartu-tahap-bentuk-warna-terkunci": [
+    658,
+    923
+  ],
+  "kartu-tahap-membaca-terbuka": [
+    705,
+    1080
+  ],
+  "kartu-tahap-membaca-terkunci": [
+    728,
+    998
+  ],
+  "kartu-tokoh-amar": [
+    879,
+    1080
+  ],
+  "kartu-tokoh-beni": [
+    873,
+    1080
+  ],
+  "kartu-tokoh-dewi": [
+    892,
+    1080
+  ],
+  "kartu-tokoh-miya": [
+    875,
+    1080
+  ],
+  "kartu-tokoh-mora": [
+    871,
+    1080
+  ],
+  "kartu-tokoh-rara": [
+    857,
+    1080
+  ],
+  "kartu-tokoh-roni": [
+    858,
+    1080
+  ],
+  "kartu-tokoh-vena": [
+    905,
+    1080
+  ],
+  "label-tahap-1-warna-dan-bentuk": [
+    560,
+    84
+  ],
+  "latar-dialog-krem-dengan-dekor": [
+    1920,
+    1080
+  ],
+  "latar-dialog-krem-polos": [
+    1671,
+    892
+  ],
+  "latar-kantor-pos": [
+    1920,
+    1080
+  ],
+  "latar-level-gelap": [
+    1920,
+    1080
+  ],
+  "latar-peta-jalan": [
+    1800,
+    2880
+  ],
+  "latar-ruangan-kantor": [
+    1920,
+    1080
+  ],
+  "latar-teks-putih": [
+    403,
+    82
+  ],
+  "logo-posikids": [
+    965,
+    394
+  ],
+  "maskot-mimi-kucing-ceria": [
+    1564,
+    1540
+  ],
+  "maskot-mimi-kucing-sedih": [
+    1644,
+    1351
+  ],
+  "maskot-zaa-berdiri-menyapa-01": [
+    676,
+    1218
+  ],
+  "maskot-zaa-berdiri-menyapa-02": [
+    634,
+    1225
+  ],
+  "maskot-zaa-kepala-dan-dialog": [
+    1267,
+    342
+  ],
+  "maskot-zaa-kepala": [
+    537,
+    573
+  ],
+  "maskot-zaa-melambaikan-tangan": [
+    567,
+    1080
+  ],
+  "maskot-zaa-memegang-surat": [
+    622,
+    1203
+  ],
+  "maskot-zaa-mimi-zee": [
+    1551,
+    1000
+  ],
+  "maskot-zaa-zee-bersama-mimi": [
+    1199,
+    1002
+  ],
+  "maskot-zaa-zee-di-kantor-pos": [
+    1920,
+    1080
+  ],
+  "maskot-zaa-zee-mimi-membawa-paket": [
+    780,
+    840
+  ],
+  "maskot-zee-berdiri-menyapa": [
+    604,
+    1230
+  ],
+  "maskot-zee-kepala": [
+    549,
+    525
+  ],
+  "maskot-zee-melambaikan-tangan": [
+    605,
+    1209
+  ],
+  "maskot-zee-membawa-paket": [
+    1920,
+    1080
+  ],
+  "maskot-zee-memegang-surat": [
+    607,
+    1189
+  ],
+  "panel-dialog-kosong": [
+    618,
+    94
+  ],
+  "panel-putih-kosong": [
+    405,
+    111
+  ],
+  "panel-surat-horizontal": [
+    618,
+    121
+  ],
+  "petunjuk-pilih-tahap": [
+    1694,
+    146
+  ],
+  "rumah-angka-11": [
+    1692,
+    1627
+  ],
+  "rumah-angka-12": [
+    1739,
+    1571
+  ],
+  "rumah-angka-16": [
+    1694,
+    1610
+  ],
+  "rumah-angka-17": [
+    1664,
+    1584
+  ],
+  "rumah-angka-19": [
+    1732,
+    1614
+  ],
+  "rumah-angka-2": [
+    1759,
+    1612
+  ],
+  "rumah-angka-21": [
+    1713,
+    1593
+  ],
+  "rumah-angka-3": [
+    1705,
+    1594
+  ],
+  "rumah-angka-4": [
+    1674,
+    1640
+  ],
+  "rumah-angka-5": [
+    1687,
+    1601
+  ],
+  "rumah-angka-6": [
+    1735,
+    1659
+  ],
+  "rumah-angka-8": [
+    1734,
+    1654
+  ],
+  "rumah-angka-9": [
+    1767,
+    1692
+  ],
+  "rumah-bintang-kuning": [
+    1534,
+    1692
+  ],
+  "rumah-bintang-ungu": [
+    1502,
+    1732
+  ],
+  "rumah-lingkaran-biru": [
+    1368,
+    1302
+  ],
+  "rumah-lingkaran-merah": [
+    1400,
+    1379
+  ],
+  "rumah-persegi-hijau": [
+    1488,
+    1692
+  ],
+  "rumah-persegi-kuning": [
+    1476,
+    1406
+  ],
+  "rumah-persegi-ungu": [
+    1467,
+    1364
+  ],
+  "rumah-segilima-oranye": [
+    1458,
+    1547
+  ],
+  "rumah-segitiga-biru": [
+    1542,
+    1503
+  ],
+  "rumah-segitiga-merah": [
+    1514,
+    1530
+  ],
+  "tombol-coba-lagi": [
+    360,
+    96
+  ],
+  "tombol-lanjut": [
+    314,
+    103
+  ],
+  "tombol-mulai-belajar": [
+    669,
+    194
+  ],
+  "tombol-puzzle-beranda": [
+    670,
+    192
+  ],
+  "tombol-tentang-beranda": [
+    686,
+    177
+  ]
+}

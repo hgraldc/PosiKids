@@ -13,7 +13,7 @@ import {
 } from "./game";
 import type { Save, StageId, Character, Question } from "./game";
 import { shuffledPieces, placePiece } from "./puzzle";
-import dimensions from "../asset-dimensions.json";
+import { artwork, stageArtwork } from "./assets";
 
 type IconName =
   | "home"
@@ -23,13 +23,22 @@ type IconName =
   | "mute"
   | "lock"
   | "unlock"
-  | "check"
   | "repeat"
   | "mail"
   | "bulb"
   | "puzzle"
   | "book";
 function Icon({ name }: { name: IconName }) {
+  const imageIcons: Partial<Record<IconName, string>> = {
+    home: "ikon-beranda",
+    back: "ikon-panah-kiri",
+    next: "ikon-panah-kanan",
+    sound: "ikon-suara-aktif",
+    mute: "ikon-suara-mati",
+    mail: "ikon-amplop",
+  };
+  if (imageIcons[name])
+    return <Art name={imageIcons[name]!} className="image-icon" />;
   const paths: Record<IconName, ReactNode> = {
     home: <path d="M5 13 16 3l11 10v14h-8v-9h-6v9H5Z" />,
     back: <path d="M28 11H15V5L3 16l12 11v-7h13Z" />,
@@ -65,7 +74,6 @@ function Icon({ name }: { name: IconName }) {
         <circle cx="16" cy="20" r="3" fill="white" />
       </>
     ),
-    check: <path className="icon-line" d="m5 16 7 7L27 7" />,
     repeat: (
       <>
         <path className="icon-line" d="M26 11A11 11 0 1 0 27 22" />
@@ -138,7 +146,7 @@ function Art({
 }) {
   const [failed, setFailed] = useState(false);
   useEffect(() => setFailed(false), [name]);
-  const size = (dimensions as Record<string, number[]>)[name] ?? [600, 600];
+  const image = artwork(name);
   if (failed)
     return (
       <span
@@ -151,9 +159,9 @@ function Art({
     );
   return (
     <img
-      src={`/assets/${name}.webp`}
-      width={size[0]}
-      height={size[1]}
+      src={image.src}
+      width={image.width}
+      height={image.height}
       alt={alt}
       className={className}
       draggable={false}
@@ -191,9 +199,16 @@ function Sign({
   children: ReactNode;
   hanging?: boolean;
 }) {
+  const signs: Record<string, string> = {
+    "Pilih Karakter": "judul-pilih-karakter",
+    "Pilih Tahap": "judul-pilih-tahap",
+    Puzzle: "judul-puzzle",
+    Tentang: "judul-tentang",
+  };
   return (
     <header className={`title-sign ${hanging ? "hanging" : ""}`}>
-      <h1 id="page-title" tabIndex={-1}>
+      <Art name={signs[String(children)]} />
+      <h1 id="page-title" tabIndex={-1} className="sr-only">
         {children}
       </h1>
     </header>
@@ -447,7 +462,9 @@ export default function App() {
                 ? "office-bg"
                 : scene === "map"
                   ? "map-bg"
-                  : "paper-bg"
+                  : scene === "reading" || scene === "puzzle"
+                    ? "reading-bg"
+                    : "paper-bg"
           }
           className="scene-background"
           priority
@@ -478,28 +495,25 @@ export default function App() {
                 className="menu-button learn"
                 onClick={() => navigate("/characters")}
               >
-                <span className="menu-symbol">
-                  <Icon name="bulb" />
+                <span className="menu-button-art">
+                  <Art name="tombol-mulai-belajar" alt="Mulai Belajar" />
                 </span>
-                Mulai Belajar
               </button>
               <button
                 className="menu-button puzzle"
                 onClick={() => navigate("/puzzle")}
               >
-                <span className="menu-symbol">
-                  <Icon name="puzzle" />
+                <span className="menu-button-art">
+                  <Art name="tombol-puzzle-beranda" alt="Puzzle" />
                 </span>
-                Puzzle
               </button>
               <button
                 className="menu-button about"
                 onClick={() => navigate("/about")}
               >
-                <span className="menu-symbol">
-                  <Icon name="book" />
+                <span className="menu-button-art">
+                  <Art name="tombol-tentang-beranda" alt="Tentang" />
                 </span>
-                Tentang
               </button>
             </nav>
             <button
@@ -525,25 +539,11 @@ export default function App() {
                   onClick={() => selectCharacter(character)}
                   aria-label={`Pilih ${character === "zaa" ? "Zaa" : "Zee"}`}
                 >
-                  <svg
-                    className="character-color"
-                    viewBox="0 0 260 400"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
-                  >
-                    <path d="M35 8C65-8 72 25 111 15S158-3 180 10 216 3 234 31 220 56 230 79 242 105 230 124 244 161 231 183 247 209 233 230 245 268 231 288 242 323 229 349 242 375 214 385 181 374 153 388 117 374 90 388 59 382 35 390 8 359 18 331 5 308 21 283 7 253 17 227 7 200 19 177 7 148 20 121 8 95 20 69 9 48 17 26Z" />
-                  </svg>
                   <Art
                     name={`select-${character}`}
                     className="character-portrait"
                     priority
                   />
-                  <span className="character-name">
-                    {character}
-                    <span aria-hidden="true">
-                      {character === "zaa" ? "♀" : "♂"}
-                    </span>
-                  </span>
                 </button>
               ))}
             </div>
@@ -559,12 +559,15 @@ export default function App() {
           <>
             <Sign>Pilih Tahap</Sign>
             <p className="stage-subtitle">
-              Yuk, Selesaikan setiap tahap untuk menjadi kurir hebat!
+              <Art
+                name="petunjuk-pilih-tahap"
+                alt="Yuk, selesaikan setiap tahap untuk menjadi kurir hebat!"
+              />
             </p>
             <Art
               name={save.character ?? "zaa"}
               alt={`Kurir ${save.character === "zee" ? "Zee" : "Zaa"}`}
-              className="stage-character"
+              className={`stage-character stage-character-${save.character ?? "zaa"}`}
               priority
             />
             <div className="stage-choices">
@@ -576,33 +579,10 @@ export default function App() {
                   aria-label={`${stage.title}, ${save.completed.includes(stage.id) ? "selesai, main lagi" : unlocked(save, stage.id) ? "mulai" : "terkunci"}`}
                   onClick={() => enterStage(stage.id)}
                 >
-                  <StageArtwork id={stage.id} />
-                  <span className="stage-title">
-                    {stage.id === 1 ? (
-                      <>
-                        Bentuk
-                        <br />
-                        dan
-                        <br />
-                        Warna
-                      </>
-                    ) : (
-                      stage.title
-                    )}
-                  </span>
-                  <span
-                    className={`stage-lock ${unlocked(save, stage.id) ? "unlocked" : ""}`}
-                  >
-                    <Icon
-                      name={
-                        save.completed.includes(stage.id)
-                          ? "check"
-                          : unlocked(save, stage.id)
-                            ? "unlock"
-                            : "lock"
-                      }
-                    />
-                  </span>
+                  <Art
+                    name={stageArtwork(stage.id, unlocked(save, stage.id))}
+                    className="stage-card-art"
+                  />
                 </button>
               ))}
             </div>
@@ -745,28 +725,6 @@ export default function App() {
     </div>
   );
 }
-function StageArtwork({ id }: { id: StageId }) {
-  return (
-    <span className={`stage-art stage-art-${id}`} aria-hidden="true">
-      {id === 1 ? (
-        <>
-          <Art name="blue-triangle" />
-          <Art name="red-circle" />
-          <Art name="yellow-star" />
-        </>
-      ) : id === 2 ? (
-        <Art name="number-2" />
-      ) : (
-        <>
-          <Art name="stage-amar" />
-          <Art name="stage-rara" />
-          <Art name="stage-mora" />
-          <Art name="stage-letter" />
-        </>
-      )}
-    </span>
-  );
-}
 function EnvelopeScroll({
   value,
   onChange,
@@ -811,7 +769,6 @@ function GameScreen({
   onAnswer: (option: string) => void;
   onSpeak: (text: string) => void;
 }) {
-  const [scroll, setScroll] = useState(0);
   const reading = stageId === 3,
     instruction = reading
       ? "Siapa penerima surat ini?"
@@ -834,21 +791,41 @@ function GameScreen({
       </div>
       {reading ? (
         <>
-          <Art name={character} className="reading-character" priority />
+          <Art
+            name={`reading-${character}`}
+            className="reading-character"
+            priority
+          />
           <div className="letter-bubble">
-            <div className="address-letter">
-              <span>untuk</span>
-              <strong>{question.emphasis}</strong>
-              <span className="letter-stamp" />
-              <i />
-              <i />
-            </div>
+            {question.emphasis === "Beni" ? (
+              <Art name="amplop-untuk-beni" alt="Surat untuk Beni" />
+            ) : (
+              <div className="address-letter">
+                <span>untuk</span>
+                <strong>{question.emphasis}</strong>
+                <span className="letter-stamp" />
+                <i />
+                <i />
+              </div>
+            )}
           </div>
           <header className="reading-instruction">
             <h1 id="page-title" tabIndex={-1}>
               {instruction}
             </h1>
-            <p>Baca nama penerima disurat, lalu cari yang sesuai yaa!</p>
+            <p>
+              <button
+                className="reading-listen"
+                onClick={() =>
+                  onSpeak(
+                    `${instruction} Surat untuk ${question.emphasis}. ${question.hint}`,
+                  )
+                }
+                aria-label="Dengarkan petunjuk"
+              >
+                Baca nama penerima di surat, lalu cari yang sesuai yaa!
+              </button>
+            </p>
           </header>
           <div className="recipient-grid" aria-label="Pilih penerima surat">
             {question.options.map((option) => (
@@ -863,25 +840,11 @@ function GameScreen({
               </button>
             ))}
           </div>
-          <button
-            className="read-instruction"
-            onClick={() =>
-              onSpeak(
-                `${instruction} Surat untuk ${question.emphasis}. ${question.hint}`,
-              )
-            }
-            aria-label="Dengarkan petunjuk"
-          >
-            <Icon name="mail" />
-          </button>
         </>
       ) : (
         <>
           <div className="map-viewport">
-            <div
-              className={`map-houses houses-stage-${stageId}`}
-              style={{ "--map-scroll": `${scroll * -0.2}%` } as CSSProperties}
-            >
+            <div className={`map-houses houses-stage-${stageId}`}>
               {question.options.map((option, index) => (
                 <button
                   key={option.id}
@@ -896,27 +859,28 @@ function GameScreen({
             </div>
           </div>
           <div className="mission-dialogue">
-            <Art name={`${character}-head`} className="mission-head" />
-            <button
-              className="mission-text"
-              onClick={() => onSpeak(`${instruction} ${question.hint}`)}
-              aria-label={`Dengarkan petunjuk: ${instruction}`}
-            >
+            <Art
+              name={`${character}-head`}
+              className={`mission-head mission-head-${character}`}
+              alt={`Kepala ${character === "zaa" ? "Zaa" : "Zee"}`}
+            />
+            <div className="mission-text">
               <h1 id="page-title" tabIndex={-1}>
                 {question.prompt} <em>{question.emphasis}.</em>
               </h1>
-              <p>
-                Perhatikan{" "}
-                {stageId === 1 ? "warna dan bentuknya" : "angka pada rumah"}{" "}
-                yaa!
-              </p>
-            </button>
+              <button
+                className="mission-listen"
+                onClick={() => onSpeak(`${instruction} ${question.hint}`)}
+                aria-label={`Dengarkan petunjuk: ${instruction}`}
+              >
+                <span>
+                  Perhatikan{" "}
+                  {stageId === 1 ? "warna dan bentuknya" : "angka pada rumah"}{" "}
+                  yaa!
+                </span>
+              </button>
+            </div>
           </div>
-          <EnvelopeScroll
-            value={scroll}
-            onChange={setScroll}
-            label="Geser peta rumah"
-          />
         </>
       )}
     </>
@@ -947,13 +911,27 @@ function Feedback({
         className="feedback-cat"
         priority
       />
-      <h2>{correct ? "Jawaban Benar" : "Jawaban Salah"}</h2>
+      <h2 className="feedback-heading">
+        <Art
+          name={correct ? "latar-teks-putih" : "panel-putih-kosong"}
+          alt={correct ? "Jawaban Benar" : "Jawaban Salah"}
+        />
+      </h2>
       <button
-        className={`feedback-action ${correct ? "correct" : "wrong"}`}
+        className={`feedback-action ${final && correct ? "correct" : "asset-action"}`}
         onClick={onContinue}
       >
-        {correct ? (final ? "Selesai" : "Lanjut") : "Coba Lagi"}
-        <Icon name={correct ? (final ? "home" : "next") : "repeat"} />
+        {correct && final ? (
+          <>
+            Selesai
+            <Icon name="home" />
+          </>
+        ) : (
+          <Art
+            name={correct ? "tombol-lanjut" : "tombol-coba-lagi"}
+            alt={correct ? "Lanjut" : "Coba Lagi"}
+          />
+        )}
       </button>
     </Modal>
   );
@@ -1053,7 +1031,7 @@ function About({
 }
 
 const pieceStyle = (id: number): CSSProperties => ({
-  backgroundImage: "url(/assets/puzzle.webp)",
+  backgroundImage: `url(${artwork("puzzle").src})`,
   backgroundSize: "300% 300%",
   backgroundPosition: `${(id % 3) * 50}% ${Math.floor(id / 3) * 50}%`,
 });

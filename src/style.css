@@ -33,6 +33,10 @@
 }
 body {
   margin: 0;
+  overflow: hidden;
+}
+body:has(.scene-about) {
+  overflow-y: auto;
 }
 button,
 input {
@@ -141,15 +145,6 @@ p {
   left: -3.5716%;
   top: -0.099%;
 }
-.scene-stages::after,
-.scene-reading::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #46434226;
-  z-index: -2;
-  pointer-events: none;
-}
 .scene-map .scene-background {
   width: 106.51%;
   height: 302.96%;
@@ -165,46 +160,18 @@ p {
   z-index: -2;
   pointer-events: none;
 }
-.scene-puzzle .scene-background {
-  width: 150.573%;
-  height: 150.37%;
-  max-width: none;
-  left: -50.573%;
-}
 .round-button {
   position: absolute;
   width: 6.15%;
   aspect-ratio: 1;
-  border: 0.2cqw solid #195978;
   border-radius: 50%;
-  background: #2fb7f5;
-  color: #064a75;
-  box-shadow:
-    inset -0.35cqw -0.45cqw 0 #1689bd,
-    0.1cqw 0.2cqw 0 #253c50;
   z-index: 5;
   display: grid;
   place-items: center;
 }
-.round-button::before,
-.round-button::after {
-  content: "";
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  rotate: 35deg;
-}
-.round-button::before {
-  width: 8%;
-  height: 21%;
-  left: 16%;
-  top: 10%;
-}
-.round-button::after {
-  width: 6%;
-  height: 7%;
-  left: 29%;
-  top: 8%;
+.image-icon {
+  width: 100%;
+  height: 100%;
 }
 .round-button svg {
   width: 66%;
@@ -245,57 +212,49 @@ p {
 }
 .home-menu {
   position: absolute;
-  left: 59.7%;
-  top: 49.75%;
-  width: 32.3%;
+  left: 58.8%;
+  top: 48%;
+  width: 34%;
   display: grid;
-  gap: 0.75cqw;
+  gap: 0;
 }
 .menu-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 7cqw;
-  padding-left: 5.5cqw;
-  border: 0.3cqw solid #bf503e;
-  border-radius: 6cqw;
-  box-shadow:
-    0.4cqw 0.5cqw 0 #514739,
-    0.85cqw 0.8cqw 0 #4e37272b;
-  font-family: Gliker, Nunito, sans-serif;
-  font-size: 3.48cqw;
-  white-space: nowrap;
-}
-.menu-button.learn {
-  background: var(--paper);
-}
-.menu-button.puzzle {
-  background: #ffb2dc;
-}
-.menu-button.about {
-  background: #91d8ff;
-}
-.menu-symbol {
-  position: absolute;
+  --menu-row-height: 8.6cqw;
   display: grid;
   place-items: center;
-  height: 96%;
-  aspect-ratio: 1;
-  left: 0.2cqw;
-  border-radius: 50%;
-  background: #d7e8f6;
+  width: 100%;
+  height: var(--menu-row-height);
+  min-height: 44px;
 }
-.menu-symbol svg {
-  width: 73%;
-  height: 73%;
+.menu-button.learn {
+  --asset-width: 669;
+  --asset-left: 11;
+  --asset-top: 20;
 }
-.puzzle .menu-symbol {
-  background: #ef8fb4;
-  color: #fff8eb;
+.menu-button.puzzle {
+  --asset-width: 670;
+  --asset-left: 8;
+  --asset-top: 18;
 }
-.about .menu-symbol {
-  background: #7dbcf1;
+.menu-button.about {
+  --asset-width: 686;
+  --asset-left: 12;
+  --asset-top: 11;
+}
+.menu-button-art {
+  position: relative;
+  display: block;
+  width: min(94%, calc(var(--menu-row-height) * 640 / 154));
+  aspect-ratio: 640 / 154;
+}
+.menu-button-art img {
+  /* All three assets have 640px of visible artwork, with different transparent margins. */
+  position: absolute;
+  left: calc(-100% * var(--asset-left) / 640);
+  top: calc(-100% * var(--asset-top) / 154);
+  width: calc(100% * var(--asset-width) / 640);
+  height: auto;
+  max-width: none;
 }
 .title-sign {
   position: absolute;
@@ -305,56 +264,22 @@ p {
   height: 10.8%;
   display: grid;
   place-items: center;
-  background: var(--paper);
-  border-radius: 2.7cqw;
-  box-shadow:
-    0 0.65cqw 0 #ab7560,
-    0.2cqw 1.2cqw 0 #9863493d;
   z-index: 2;
 }
-.title-sign h1 {
-  font-family: Gliker, Nunito, sans-serif;
-  font-size: 3.7cqw;
-  line-height: 1.1;
-  text-align: center;
+.title-sign img {
+  width: 100%;
+  height: 100%;
 }
-.hanging::before,
-.hanging::after {
-  content: "";
-  position: absolute;
-  top: -10cqw;
-  width: 0.4cqw;
-  height: 13cqw;
-  background: #98523b;
-}
-.hanging::before {
-  left: 5%;
-}
-.hanging::after {
-  right: 6%;
-}
-.hanging h1::before,
-.hanging h1::after {
-  content: "";
-  position: absolute;
-  width: 2cqw;
-  height: 2cqw;
-  border-radius: 50%;
-  top: 31%;
-  background: #98523b;
-}
-.hanging h1::before {
-  left: 3.6%;
-}
-.hanging h1::after {
-  right: 4.6%;
+.title-sign.hanging {
+  top: -12%;
+  height: 31%;
 }
 .character-choices {
   position: absolute;
   left: 22.6%;
   right: 21.7%;
-  top: 24.3%;
-  bottom: 11%;
+  top: 22%;
+  bottom: 6%;
   display: flex;
   justify-content: space-between;
 }
@@ -362,194 +287,61 @@ p {
   position: relative;
   width: 41%;
   height: 100%;
-  background: #fff;
-  border: 0.35cqw solid #ed8653;
-  border-radius: 2.8cqw;
-}
-.character-color {
-  position: absolute;
-  width: 92%;
-  height: 83%;
-  left: 4%;
-  bottom: 3%;
-  fill: #ffb2dc;
-  stroke: #c9493b;
-  stroke-width: 4;
-  overflow: visible;
-}
-.zee .character-color {
-  fill: #91d8ff;
 }
 .character-portrait {
-  position: absolute;
-  width: 104%;
-  max-width: none;
+  width: 100%;
   height: 100%;
-  bottom: 5%;
-  left: -2%;
-}
-.zee .character-portrait {
-  width: 94%;
-  left: 4%;
-  height: 102%;
-  bottom: 6%;
-}
-.character-name {
-  position: absolute;
-  left: 22%;
-  bottom: -8.8%;
-  min-width: 61%;
-  border: 0.35cqw solid #ed8653;
-  border-radius: 3cqw;
-  background: #ef5391;
-  color: white;
-  font-family: Gliker, Nunito, sans-serif;
-  font-size: 3.25cqw;
-  line-height: 1.05;
-  padding: 0.2cqw 3.4cqw 0.2cqw 1.3cqw;
-}
-.zee .character-name {
-  background: #539bff;
-}
-.character-name > span {
-  position: absolute;
-  right: -0.3cqw;
-  top: -0.4cqw;
-  border: 0.3cqw solid #ed8653;
-  border-radius: 50%;
-  background: #ff80b7;
-  height: 4.2cqw;
-  width: 4.2cqw;
-  font-family: Arial, sans-serif;
-  font-size: 3.7cqw;
-  line-height: 1;
-}
-.zee .character-name > span {
-  background: #83b2ff;
 }
 .scene-stages .title-sign {
   left: 29%;
-  top: 10.7%;
+  top: 9%;
+  height: 15%;
 }
 .stage-subtitle {
   position: absolute;
   left: 27.4%;
   top: 25.7%;
-  color: #fff;
-  font-family: Marykate, Chau, sans-serif;
-  font-size: 3cqw;
-  text-shadow: 0 0.2cqw 0.4cqw #594b3c;
+  width: 56%;
+  height: 7%;
+}
+.stage-subtitle img {
+  width: 100%;
+  height: 100%;
 }
 .stage-character {
   position: absolute;
-  height: 73%;
-  width: 23%;
-  left: 3%;
-  bottom: 8.2%;
+  height: 80%;
+  width: 25%;
+  left: 2.6%;
+  bottom: 4.9%;
   object-position: bottom;
-  -webkit-box-reflect: below -0.1cqw linear-gradient(transparent 80%, #ffffff33);
+}
+.stage-character-zee {
+  width: 22.1%;
+  left: 4.7%;
+  bottom: 6.2%;
 }
 .stage-choices {
   position: absolute;
-  left: 24.9%;
+  left: 26%;
   right: 10.7%;
-  top: 39.2%;
-  bottom: 12.9%;
+  top: 37%;
+  bottom: 5%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.55cqw;
 }
 .stage-choice {
   position: relative;
-  background: var(--paper);
-  border: 0.35cqw solid var(--outline);
-  border-radius: 2.6cqw;
-  box-shadow:
-    0.4cqw 0.45cqw 0 #ba8977,
-    0.9cqw 0.8cqw 0 #97644a40,
-    0 3.8cqw 1.2cqw -3cqw #594a3e;
+  min-width: 0;
+  min-height: 0;
 }
 .stage-choice[aria-disabled="true"]:hover {
   translate: 0 0;
 }
-.stage-art {
-  position: absolute;
-  top: 4%;
+.stage-card-art {
   width: 100%;
-  height: 54%;
-  left: 0;
-}
-.stage-art img {
-  position: absolute;
-}
-.stage-art-1 img:nth-child(1) {
-  width: 61%;
-  left: 0;
-  top: 1%;
-}
-.stage-art-1 img:nth-child(2) {
-  width: 54%;
-  right: 0;
-  top: 20%;
-}
-.stage-art-1 img:nth-child(3) {
-  height: 98%;
-  width: 76%;
-  left: 21%;
-  top: 0;
-}
-.stage-art-2 img {
-  width: 92%;
   height: 100%;
-  left: 4%;
-}
-.stage-art-3 img {
-  width: 35%;
-  height: 70%;
-  bottom: 0;
-}
-.stage-art-3 img:nth-child(1) {
-  left: 8%;
-}
-.stage-art-3 img:nth-child(2) {
-  left: 32%;
-  top: 3%;
-}
-.stage-art-3 img:nth-child(3) {
-  right: 6%;
-}
-.stage-art-3 img:nth-child(4) {
-  left: 30%;
-  bottom: -4%;
-  width: 46%;
-  height: 46%;
-}
-.stage-title {
-  position: absolute;
-  top: 62%;
-  left: 0;
-  width: 100%;
-  font-family: Gliker, Nunito, sans-serif;
-  font-size: 2cqw;
-  line-height: 1.18;
-}
-.stage-2 .stage-title,
-.stage-3 .stage-title {
-  top: 71%;
-}
-.stage-lock {
-  position: absolute;
-  left: 32%;
-  bottom: -16%;
-  width: 37%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--paper);
-  padding: 6%;
-  color: #777;
-}
-.stage-lock.unlocked {
-  color: #ffb43f;
 }
 .stage-marker {
   position: absolute;
@@ -575,7 +367,7 @@ p {
   font-family: Marykate, Chau, sans-serif;
   font-size: 1.45cqw;
 }
-.stage-marker svg {
+.stage-marker .image-icon {
   width: 1.8cqw;
   height: 1.8cqw;
   rotate: 15deg;
@@ -620,7 +412,6 @@ p {
 .map-houses {
   position: absolute;
   inset: 0;
-  translate: 0 var(--map-scroll, 0);
 }
 .house-option {
   position: absolute;
@@ -672,18 +463,18 @@ p {
   width: 64%;
   height: 23%;
   left: 17%;
-  bottom: 0;
+  bottom: 3.5%;
   display: flex;
   align-items: center;
 }
 .mission-head {
   position: absolute;
-  width: 30%;
-  height: 130%;
-  bottom: -32%;
+  width: 28%;
+  height: 100%;
+  bottom: 0;
   left: 0;
   z-index: 2;
-  object-position: center;
+  object-position: right bottom;
 }
 .mission-text {
   position: absolute;
@@ -691,15 +482,20 @@ p {
   width: 75%;
   bottom: 7.5%;
   padding: 1cqw 1.6cqw;
+  padding-left: 3cqw;
   border: 0.1cqw solid #a9503d;
   border-radius: 2cqw;
   background: #fff;
   text-align: left;
 }
 .mission-text h1,
-.mission-text p {
+.mission-listen {
   font-size: 1.9cqw;
   line-height: 1.25;
+}
+.mission-listen {
+  text-align: left;
+  min-height: 44px;
 }
 .mission-text em {
   font-style: normal;
@@ -737,9 +533,6 @@ p {
   display: grid;
   place-items: center;
   aspect-ratio: 1;
-  padding: 13%;
-  background: #b77751;
-  color: #603726;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -747,17 +540,14 @@ p {
   width: 100%;
   top: clamp(0px, var(--scroll), calc(100% - 2.5cqw));
 }
-.envelope-thumb svg {
-  rotate: 18deg;
-}
 .reading-character {
   position: absolute;
   height: 83%;
   width: 28%;
   left: -0.3%;
   bottom: -1%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: bottom;
 }
 .letter-bubble {
   position: absolute;
@@ -778,6 +568,10 @@ p {
   border-width: 1.5cqw 1.5cqw 0 0;
   border-style: solid;
   border-color: #fff transparent transparent;
+}
+.letter-bubble > img {
+  width: 90%;
+  height: 90%;
 }
 .address-letter {
   position: relative;
@@ -831,8 +625,9 @@ p {
 .reading-instruction h1 {
   font-size: 2.35cqw;
 }
-.reading-instruction p {
+.reading-listen {
   font-size: 1.95cqw;
+  min-height: 44px;
 }
 .recipient-grid {
   position: absolute;
@@ -853,24 +648,7 @@ p {
 .recipient-option img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
-}
-.read-instruction {
-  position: absolute;
-  bottom: 7.7%;
-  left: 65.3%;
-  width: 19.7%;
-  height: 4.5%;
-  border-radius: 3cqw;
-  background: #fff;
-}
-.read-instruction svg {
-  width: 3.6cqw;
-  height: 2.7cqw;
-  padding: 0.5cqw;
-  background: #b77751;
-  border-radius: 50%;
-  margin-left: 8%;
+  object-fit: contain;
 }
 dialog {
   color: var(--ink);
@@ -924,6 +702,20 @@ dialog::backdrop {
 }
 .feedback-action:focus-visible {
   outline-color: #fff;
+}
+.feedback-heading img {
+  width: 82%;
+  height: auto;
+  margin: 0 auto;
+}
+.feedback-action.asset-action {
+  width: 65%;
+  padding: 0;
+  background: none;
+}
+.feedback-action .image-icon {
+  width: 1em;
+  height: 1em;
 }
 .feedback-replay {
   display: block;
@@ -1191,9 +983,8 @@ dialog::backdrop {
   .scene {
     width: 100%;
     aspect-ratio: auto;
-    min-height: 100svh;
+    height: 100svh;
     font-size: 18px;
-    padding: 90px 20px 90px;
   }
   .scene-background {
     object-fit: cover;
@@ -1201,10 +992,6 @@ dialog::backdrop {
   .round-button {
     width: 48px;
     height: 48px;
-    border-width: 2px;
-    box-shadow:
-      inset -3px -4px 0 #1689bd,
-      1px 2px 0 #253c50;
   }
   .home-control {
     top: 15px;
@@ -1222,9 +1009,6 @@ dialog::backdrop {
     top: 15px;
     right: 15px;
   }
-  .scene-home {
-    min-height: max(760px, 100svh);
-  }
   .scene-home .scene-background {
     width: 100%;
     height: 100%;
@@ -1239,7 +1023,7 @@ dialog::backdrop {
   }
   .home-characters {
     width: 70%;
-    height: 43%;
+    height: 38%;
     left: 15%;
     top: 25%;
   }
@@ -1248,140 +1032,47 @@ dialog::backdrop {
     width: 76%;
     top: auto;
     bottom: 5%;
-    gap: 13px;
+    gap: 1svh;
   }
   .menu-button {
-    height: 62px;
-    border-width: 3px;
-    border-radius: 36px;
-    padding-left: 48px;
-    font-size: 25px;
-    box-shadow:
-      4px 5px 0 #514739,
-      7px 8px 0 #4e37272b;
+    --menu-row-height: 8svh;
   }
   .title-sign,
   .scene-stages .title-sign {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    height: 60px;
-    border-radius: 25px;
-    margin: 0 auto 30px;
-    box-shadow: 0 5px 0 #ab7560;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 12%;
   }
-  .title-sign h1 {
-    font-size: 29px;
-  }
-  .hanging::before,
-  .hanging::after {
-    width: 3px;
-    top: -95px;
-    height: 120px;
-  }
-  .hanging h1::before,
-  .hanging h1::after {
-    width: 15px;
-    height: 15px;
-    top: 18px;
+  .title-sign.hanging {
+    top: 5%;
+    height: 19%;
   }
   .character-choices {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 365px;
-    gap: 20px;
-    margin-top: 55px;
+    inset: 26% 4% 17%;
+    gap: 12px;
   }
   .character-choice {
     width: 50%;
-    border-width: 3px;
-    border-radius: 24px;
-  }
-  .character-portrait {
-    height: 95%;
-    bottom: 3%;
-  }
-  .zee .character-portrait {
-    height: 96%;
-    bottom: 4%;
-  }
-  .character-color {
-    height: 80%;
-  }
-  .character-name {
-    left: 7%;
-    bottom: -24px;
-    width: 91%;
-    font-size: 27px;
-    border-width: 3px;
-    border-radius: 28px;
-    padding: 3px 32px 3px 12px;
-  }
-  .character-name > span {
-    height: 40px;
-    width: 40px;
-    font-size: 34px;
-    top: -4px;
-    border-width: 3px;
   }
   .stage-subtitle {
-    position: relative;
-    inset: auto;
-    font-size: 24px;
-    text-align: center;
-    margin: -5px 0 25px;
-    line-height: 1.1;
+    left: 5%;
+    top: 24%;
+    width: 90%;
+    height: 7%;
+  }
+  .scene-stages .scene-background {
+    object-fit: fill;
   }
   .stage-character {
-    height: 240px;
-    width: 135px;
-    left: -15px;
-    bottom: 80px;
-    opacity: 0.95;
+    height: 30%;
+    width: 28%;
+    left: 3%;
+    bottom: 8.5%;
   }
   .stage-choices {
-    position: relative;
-    inset: auto;
-    margin-left: 70px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .stage-choice {
-    min-height: 150px;
-    border-width: 3px;
-    border-radius: 23px;
-    box-shadow: 4px 5px 0 #ba8977;
-  }
-  .stage-art {
-    width: 52%;
-    height: 85%;
-    top: 5%;
-  }
-  .stage-title,
-  .stage-2 .stage-title,
-  .stage-3 .stage-title {
-    width: 48%;
-    left: 52%;
-    top: 25%;
-    font-size: 18px;
-  }
-  .stage-2 .stage-title,
-  .stage-3 .stage-title {
-    top: 40%;
-  }
-  .stage-lock {
-    width: 44px;
-    height: 44px;
-    bottom: -14px;
-    left: auto;
-    right: 8px;
-    padding: 8px;
-  }
-  .scene-map {
-    min-height: max(780px, 100svh);
+    inset: 33% 4% 35%;
+    gap: 8px;
   }
   .scene-map .scene-background {
     object-fit: cover;
@@ -1403,7 +1094,7 @@ dialog::backdrop {
     padding: 0 8px;
     border-radius: 20px;
   }
-  .stage-marker svg {
+  .stage-marker .image-icon {
     width: 17px;
     height: 17px;
   }
@@ -1420,13 +1111,14 @@ dialog::backdrop {
     border-width: 2px;
   }
   .map-viewport {
-    inset: 115px 22px 190px;
+    inset: 18% 22px 33%;
   }
   .map-houses {
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px 20px;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 15px 20px;
     height: 100%;
   }
   .house-option,
@@ -1437,27 +1129,28 @@ dialog::backdrop {
     height: 100%;
   }
   .mission-dialogue {
-    width: calc(100% - 44px);
-    left: 10px;
-    bottom: 70px;
-    height: 125px;
+    width: 94%;
+    left: 3%;
+    bottom: 13%;
+    height: 18%;
   }
   .mission-head {
-    width: 100px;
-    height: 115px;
+    width: 28%;
+    height: 100%;
     bottom: 0;
   }
   .mission-text {
-    left: 90px;
-    width: calc(100% - 90px);
-    bottom: 18px;
-    padding: 12px;
+    left: 24%;
+    width: 76%;
+    bottom: 0;
+    padding: 8px;
+    padding-left: 7cqw;
     border-radius: 18px;
     border-width: 1px;
   }
   .mission-text h1,
-  .mission-text p {
-    font-size: 16px;
+  .mission-listen {
+    font-size: clamp(14px, 3.9cqw, 18px);
   }
   .envelope-scroll.vertical {
     right: 9px;
@@ -1472,21 +1165,18 @@ dialog::backdrop {
   .vertical .envelope-thumb {
     top: clamp(0px, var(--scroll), calc(100% - 17px));
   }
-  .scene-reading {
-    min-height: 890px;
-  }
   .reading-character {
-    width: 125px;
-    height: 225px;
-    left: 15px;
-    top: 105px;
+    width: 29%;
+    height: 25%;
+    left: 8%;
+    top: 15%;
     bottom: auto;
   }
   .letter-bubble {
-    width: 155px;
-    height: 115px;
-    left: 160px;
-    top: 130px;
+    width: 43%;
+    height: 17%;
+    left: 43%;
+    top: 20%;
     border-radius: 20px;
   }
   .address-letter {
@@ -1511,50 +1201,40 @@ dialog::backdrop {
     border-top-width: 1px;
   }
   .reading-instruction {
-    top: 310px;
+    top: 41%;
     left: 20px;
     width: calc(100% - 40px);
-    height: 90px;
+    height: 13%;
     border-radius: 18px;
     border-width: 1px;
-    padding: 10px;
+    padding: 6px;
   }
   .reading-instruction h1 {
-    font-size: 22px;
+    font-size: clamp(18px, 5cqw, 23px);
   }
-  .reading-instruction p {
-    font-size: 17px;
+  .reading-listen {
+    font-size: clamp(14px, 3.9cqw, 18px);
   }
   .recipient-grid {
-    position: relative;
-    inset: auto;
-    margin-top: 330px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-    gap: 22px 12px;
+    inset: 56% 4% 13%;
+    gap: 12px 8px;
   }
   .recipient-option {
-    min-height: 95px;
     border-radius: 12px;
   }
   .recipient-option img {
     object-fit: contain;
   }
-  .read-instruction {
-    left: 30%;
-    width: 40%;
-    height: 44px;
-    bottom: 30px;
-    border-radius: 30px;
-  }
-  .read-instruction svg {
-    width: 42px;
-    height: 35px;
-    padding: 7px;
-  }
   .scene-about {
-    padding-bottom: 100px;
+    height: auto;
+    min-height: 100svh;
+    padding: 90px 20px 100px;
+  }
+  .scene-about .title-sign {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 110px;
   }
   .about-friends {
     position: relative;
@@ -1597,9 +1277,6 @@ dialog::backdrop {
   .parent-notes {
     margin-top: 25px;
   }
-  .scene-puzzle {
-    min-height: 1080px;
-  }
   .scene-puzzle .scene-background {
     width: 100%;
     height: 100%;
@@ -1607,50 +1284,56 @@ dialog::backdrop {
     object-fit: cover;
   }
   .puzzle-board-wrap {
-    position: relative;
-    inset: auto;
-    width: 100%;
+    top: 23%;
+    left: 50%;
+    translate: -50% 0;
+    width: min(65%, 32svh);
   }
   .puzzle-board {
     border-width: 5px;
   }
   .puzzle-slot > span {
-    font-size: 24px;
+    font-size: 18px;
   }
   .puzzle-message {
-    font-size: 16px;
-    margin-top: 12px;
+    font-size: 13px;
+    margin-top: 4px;
   }
   .puzzle-tools {
-    position: relative;
-    inset: auto;
-    margin-top: 15px;
+    inset: 56% 10% 11%;
   }
   .puzzle-intro {
-    font-size: 25px;
+    font-size: 17px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+  }
+  .puzzle-intro br {
+    display: none;
   }
   .puzzle-toolbar,
   .puzzle-reset {
-    font-size: 18px;
+    font-size: 14px;
+  }
+  .puzzle-toolbar {
+    margin: 0;
   }
   .pieces-grid {
-    height: 270px;
-    gap: 10px;
+    height: calc(100% - 112px);
+    min-height: 72px;
+    gap: 5px;
   }
   .puzzle-piece,
   .piece-holder {
     border-radius: 5px;
   }
   .puzzle-preview {
-    height: 270px;
+    height: calc(100% - 112px);
   }
   .feedback-modal {
     width: min(85vw, 420px);
   }
   .feedback-cat {
-    height: min(85vw, 390px);
+    height: min(65vw, 40svh);
   }
   .feedback-modal h2 {
     font-size: 30px;
