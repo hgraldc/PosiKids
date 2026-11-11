@@ -1,0 +1,222 @@
+{
+  "logo": {
+    "source": "1000702127.png",
+    "url": "/assets/logo.webp",
+    "bytes": 26742
+  },
+  "hero": {
+    "source": "PosiKids_20261023_214912_0000.png",
+    "url": "/assets/hero.webp",
+    "bytes": 131010
+  },
+  "home-bg": {
+    "source": "PosiKids_20261023_214812_0000.jpg.jpeg",
+    "url": "/assets/home-bg.webp",
+    "bytes": 61338
+  },
+  "office-bg": {
+    "source": "1000702132.jpg",
+    "url": "/assets/office-bg.webp",
+    "bytes": 43646
+  },
+  "paper-bg": {
+    "source": "1000702133.jpg",
+    "url": "/assets/paper-bg.webp",
+    "bytes": 13240
+  },
+  "zaa": {
+    "source": "1000694349.png",
+    "url": "/assets/zaa.webp",
+    "bytes": 83370
+  },
+  "zee": {
+    "source": "1000694357.png",
+    "url": "/assets/zee.webp",
+    "bytes": 100230
+  },
+  "zaa-head": {
+    "source": "1000692326.png",
+    "url": "/assets/zaa-head.webp",
+    "bytes": 14528
+  },
+  "zee-head": {
+    "source": "1000699792.png",
+    "url": "/assets/zee-head.webp",
+    "bytes": 14378
+  },
+  "mimi-happy": {
+    "source": "1000692754.png",
+    "url": "/assets/mimi-happy.webp",
+    "bytes": 51140
+  },
+  "mimi-retry": {
+    "source": "1000694114.png",
+    "url": "/assets/mimi-retry.webp",
+    "bytes": 35230
+  },
+  "family": {
+    "source": "1000719447.png",
+    "url": "/assets/family.webp",
+    "bytes": 87048
+  },
+  "puzzle": {
+    "source": "1000698931.png",
+    "url": "/assets/puzzle.webp",
+    "bytes": 68036
+  },
+  "red-triangle": {
+    "source": "1000692840.png",
+    "url": "/assets/red-triangle.webp",
+    "bytes": 23206
+  },
+  "blue-circle": {
+    "source": "1000692860.png",
+    "url": "/assets/blue-circle.webp",
+    "bytes": 27902
+  },
+  "yellow-square": {
+    "source": "1000693442.png",
+    "url": "/assets/yellow-square.webp",
+    "bytes": 16854
+  },
+  "purple-star": {
+    "source": "1000693507.png",
+    "url": "/assets/purple-star.webp",
+    "bytes": 29944
+  },
+  "orange-pentagon": {
+    "source": "1000693542.png",
+    "url": "/assets/orange-pentagon.webp",
+    "bytes": 28348
+  },
+  "green-rectangle": {
+    "source": "1000693543.png",
+    "url": "/assets/green-rectangle.webp",
+    "bytes": 16892
+  },
+  "blue-triangle": {
+    "source": "1000694288.png",
+    "url": "/assets/blue-triangle.webp",
+    "bytes": 22732
+  },
+  "red-circle": {
+    "source": "1000694299.png",
+    "url": "/assets/red-circle.webp",
+    "bytes": 25668
+  },
+  "yellow-star": {
+    "source": "1000694306.png",
+    "url": "/assets/yellow-star.webp",
+    "bytes": 29670
+  },
+  "purple-rectangle": {
+    "source": "1000694307.png",
+    "url": "/assets/purple-rectangle.webp",
+    "bytes": 16630
+  },
+  "number-11": {
+    "source": "1000696138.png",
+    "url": "/assets/number-11.webp",
+    "bytes": 21272
+  },
+  "number-17": {
+    "source": "1000696140.png",
+    "url": "/assets/number-17.webp",
+    "bytes": 22088
+  },
+  "number-16": {
+    "source": "1000696141.png",
+    "url": "/assets/number-16.webp",
+    "bytes": 22534
+  },
+  "number-12": {
+    "source": "1000696142.png",
+    "url": "/assets/number-12.webp",
+    "bytes": 21546
+  },
+  "number-21": {
+    "source": "1000696143.png",
+    "url": "/assets/number-21.webp",
+    "bytes": 21998
+  },
+  "number-19": {
+    "source": "1000696144.png",
+    "url": "/assets/number-19.webp",
+    "bytes": 21480
+  },
+  "number-6": {
+    "source": "1000696145.png",
+    "url": "/assets/number-6.webp",
+    "bytes": 21370
+  },
+  "number-4": {
+    "source": "1000696146.png",
+    "url": "/assets/number-4.webp",
+    "bytes": 22152
+  },
+  "number-3": {
+    "source": "1000696147.png",
+    "url": "/assets/number-3.webp",
+    "bytes": 21448
+  },
+  "number-8": {
+    "source": "1000696148.png",
+    "url": "/assets/number-8.webp",
+    "bytes": 21290
+  },
+  "number-9": {
+    "source": "1000696149.png",
+    "url": "/assets/number-9.webp",
+    "bytes": 20966
+  },
+  "number-2": {
+    "source": "1000696150.png",
+    "url": "/assets/number-2.webp",
+    "bytes": 20524
+  },
+  "number-5": {
+    "source": "1000696151.png",
+    "url": "/assets/number-5.webp",
+    "bytes": 21626
+  },
+  "rara": {
+    "source": "1000719452.png",
+    "url": "/assets/rara.webp",
+    "bytes": 9616
+  },
+  "beni": {
+    "source": "1000719453.png",
+    "url": "/assets/beni.webp",
+    "bytes": 9170
+  },
+  "mora": {
+    "source": "1000719454.png",
+    "url": "/assets/mora.webp",
+    "bytes": 8720
+  },
+  "roni": {
+    "source": "1000719455.png",
+    "url": "/assets/roni.webp",
+    "bytes": 8444
+  },
+  "amar": {
+    "source": "1000719456.png",
+    "url": "/assets/amar.webp",
+    "bytes": 10098
+  },
+  "dewi": {
+    "source": "1000719457.png",
+    "url": "/assets/dewi.webp",
+    "bytes": 10138
+  },
+  "vena": {
+    "source": "1000719458.png",
+    "url": "/assets/vena.webp",
+    "bytes": 10600
+  },
+  "miya": {
+    "source": "1000719459.png",
+    "url": "/assets/miya.webp",
+    "bytes": 9232
+  }
+}
